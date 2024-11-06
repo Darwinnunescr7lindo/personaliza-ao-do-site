@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brawl Stars Fan Site</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f4ff;
+            color: #333;
+        }
+
+        header {
+            background-color: #6200ea;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        header:hover {
+            background-color: #7e3ff2;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .icon {
+            margin: 0 15px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
+        }
+
+        .sidebar {
+            background-color: #03a9f4;
+            color: white;
+            padding: 15px;
+            width: 220px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #6200ea;
+        }
+
+        main {
+            margin-left: 240px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section {
+            margin-bottom: 20px;
+            text-align: center;
+            border: 2px solid #6200ea;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 600px;
+            transition: box-shadow 0.3s;
+        }
+
+        section:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #6200ea;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #6200ea;
+            color: white;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 100px;
+            height: auto;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        #quiz-content {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .quiz-question {
+            margin: 10px 0;
+        }
+
+        #comments {
+            margin-top: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        #comments ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #comments li {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #comments li:hover {
+            background-color: #e0e0e0;
+        }
+
+        .skin-store {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .skin {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #6200ea;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            text-align: center;
+        }
+
+        .skin img {
+            width: 80px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .skin:hover {
+            background-color: #ffdd00;
+            transform: scale(1.05);
+        }
+
+        .cart {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #6200ea;
+            border-radius: 10px;
+            background-color: #ffffff;
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart li {
+            margin: 5px 0;
+        }
+
+        #total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Brawl Stars Fan Site</h1>
+        <div class="icons">
+            <div class="icon" id="profile-icon" title="Login">👤</div>
+            <div class="icon" id="cart-icon" title="Carrinho">🛒</div>
+        </div>
+    </header>
+    <div class="sidebar">
+        <h2>Categorias</h2>
+        <ul>
+            <li><a href="#brawlers">Brawlers</a></li>
+            <li><a href="#tactics">Táticas</a></li>
+            <li><a href="#news">Notícias</a></li>
+            <li><a href="#gallery">Galeria</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#skins">Loja de Skins</a></li>
+            <li><a href="#comments">Comentários</a></li>
+        </ul>
+    </div>
+    <main>
+        <section id="brawlers">
+            <h2>Brawlers</h2>
+            <p><strong>Colt:</strong> Um brawler de ataque à distância com alta mobilidade e dano considerável!</p>
+            <p><em>Habilidade Especial:</em> Dispara uma série de balas em linha reta.</p>
+        </section>
+        <section id="tactics">
+            <h2>Táticas</h2>
+            <p>Dicas para se tornar um mestre em Brawl Stars!</p>
+            <ul>
+                <li>Utilize a cobertura do mapa para evitar ser atingido.</li>
+                <li>Coordene com seu time para ataques estratégicos.</li>
+                <li>Aprenda a utilizar as habilidades de cada brawler ao máximo!</li>
+            </ul>
+        </section>
+        <section id="news">
+            <h2>Notícias</h2>
+            <p>Fique por dentro das últimas novidades do Brawl Stars!</p>
+            <p>Novos brawlers e eventos emocionantes estão sempre chegando!</p>
+        </section>
+        <section id="gallery">
+            <h2>Galeria</h2>
+            <div class="gallery">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5eZ9tyf8r23RUwE1phy1RSVPhxQ0OWArWCA&s" alt="Shelly">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb_tHdGXBNTiSX3Cv9sXg6qhwc5ZKSQ7oYTQwGuE0y37KSpxTN_eIQQhWpHPckU9Wd13Y&usqp=CAU" alt="Colt">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVDIdWQl1LvfyWb970c80SJdyYG0jVS9vHbe5hEEWDgfNsY5O8j1kYMaynLp71TfwjA8o&usqp=CAU" alt="Brock">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtY22ElsvBK2twXlPvhYtLbE6WZGXC3SEPMvtkU0AGdXnmJveCW4jfdsu4NLzynQj9E4&usqp=CAU" alt="Leon">
+            </div>
+        </section>
+        <section id="quiz">
+            <h2>Quiz</h2>
+            <button id="start-quiz">Começar Quiz</button>
+            <div id="quiz-content" style="display: none;">
+                <div class="quiz-question">
+                    <strong>1. Qual é o brawler mais rápido?</strong><br>
+                    <button class="answer" data-correct="false">Shelly</button>
+                    <button class="answer" data-correct="true">Leon</button>
+                    <button class="answer" data-correct="false">Colt</button>
+                </div>
+                <div class="quiz-question">
+                    <strong>2. Qual brawler tem um ataque de área?</strong><br>
+                    <button class="answer" data-correct="true">Jessie</button>
+                    <button class="answer" data-correct="false">Brock</button>
+                    <button class="answer" data-correct="false">Nita</button>
+                </div>
+                <div class="quiz-question">
+                    <strong>3. Qual é a habilidade especial de Colt?</strong><br>
+                    <button class="answer" data-correct="true">Disparar em linha reta</button>
+                    <button class="answer" data-correct="false">Criar um escudo</button>
+                    <button class="answer" data-correct="false">Lançar um foguete</button>
+                </div>
+                <button id="submit-quiz">Enviar Respostas</button>
+                <div id="quiz-result"></div>
+            </div>
+        </section>
+        <section id="skins">
+            <h2>Loja de Skins "ULTRA PROMO" </h2>
+            <div class="skin-store">
+                <div class="skin" data-price="5" onclick="addToCart('Skin do Leon', 5)">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTplWPtrzE7FLYohrNsq9-EV9bEV27yZtkhDw&s" alt="Skin do Leon">
+                    <p>Skin do Leon - $15</p>
+                    <button onclick="addToCart('Skin do Leon', 5)">Adicionar ao Carrinho</button>
+                </div>
+                <div class="skin" data-price="4" onclick="addToCart('Skin da Shelly', 4)">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOIG6kE0imZInZUDzL_gTuUcMF-w4bWSjIbh43GDAjA1J1xBtoiecl25aESeEbCgn05rQ&usqp=CAU" alt="Skin da Shelly">
+                    <p>Skin da Shelly - $17,99</p>
+                    <button onclick="addToCart('Skin da Shelly', 4)">Adicionar ao Carrinho</button>
+                </div>
+                <div class="skin" data-price="6" onclick="addToCart('Skin do Colt', 6)">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc0n1bMtO2v5BetR8bXCYTnDkFyUHJqFepLA&s" alt="Skin do Colt">
+                    <p>Skin do Colt - $20,99</p>
+                    <button onclick="addToCart('Skin do Colt', 6)">Adicionar ao Carrinho</button>
+                </div>
+                <div class="skin" data-price="5" onclick="addToCart('Skin do Brock', 5)">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIL9AwvOgkhtuaE1z9C1SMQdEBU-jA7l0GCQ&s" alt="Skin do Brock">
+                    <p>Skin do Brock - $33,50</p>
+                    <button onclick="addToCart('Skin do Brock', 5)">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </section>
+        <section id="comments">
+            <h2>Comentários</h2>
+            <div id="comments">
+                <ul>
+                    <li> Chave - Enzo</li>
+                    <li> QUE LEGAL! - Isa</li>
+                    <li>ta daora- Pedro</li>
+                </ul>
+            </div>
+            <textarea id="comment-input" placeholder="Deixe seu comentário..." rows="3" style="width: 100%;"></textarea>
+            <button id="add-comment">Adicionar Comentário</button>
+        </section>
+        <div class="cart" id="cart" style="display: none;">
+            <h2>Carrinho</h2>
+            <ul id="cart-items"></ul>
+            <div id="total">Total: $0</div>
+            <button id="checkout" style="display: none;">Finalizar Compra</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Brawl Stars Fan Site. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        let cart = [];
+        let totalAmount = 0;
+
+        document.getElementById('profile-icon').addEventListener('click', function() {
+            const username = prompt("Digite seu nome de usuário:");
+            if (username) {
+                alert(`Bem-vindo, ${username}!`);
+            }
+        });
+
+        document.getElementById('cart-icon').addEventListener('click', function() {
+            const cartElement = document.getElementById('cart');
+            cartElement.style.display = cartElement.style.display === 'none' ? 'block' : 'none';
+        });
+
+        function addToCart(skinName, price) {
+            cart.push(skinName);
+            totalAmount += price;
+            updateCart();
+            alert(`${skinName} foi adicionado ao carrinho!`);
+        }
+
+        function updateCart() {
+            const cartItemsElement = document.getElementById('cart-items');
+            cartItemsElement.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                cartItemsElement.appendChild(li);
+            });
+            document.getElementById('total').textContent = `Total: $${totalAmount}`;
+            document.getElementById('checkout').style.display = cart.length > 0 ? 'block' : 'none';
+        }
+
+        document.getElementById('checkout').addEventListener('click', function() {
+            alert(`Compra finalizada! Total: $${totalAmount}`);
+            cart = [];
+            totalAmount = 0;
+            updateCart();
+            document.getElementById('cart').style.display = 'none';
+        });
+
+        document.getElementById('start-quiz').addEventListener('click', function() {
+            document.getElementById('quiz-content').style.display = 'block';
+            this.style.display = 'none';
+        });
+
+        const answers = document.querySelectorAll('.answer');
+        answers.forEach(answer => {
+            answer.addEventListener('click', function() {
+                const correct = this.getAttribute('data-correct') === 'true';
+                if (correct) {
+                    alert('Correto!');
+                } else {
+                    alert('Incorreto!');
+                }
+            });
+        });
+
+        document.getElementById('add-comment').addEventListener('click', function() {
+            const commentInput = document.getElementById('comment-input');
+            const commentText = commentInput.value;
+            if (commentText) {
+                const commentList = document.getElementById('comments').querySelector('ul');
+                const newComment = document.createElement('li');
+                newComment.textContent = commentText;
+                commentList.appendChild(newComment);
+                commentInput.value = '';
+            } else {
+                alert('Por favor, digite um comentário.');
+            }
+        });
+    </script>
+</body>
+</html>
